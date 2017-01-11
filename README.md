@@ -1,5 +1,6 @@
-Please complete all your project development in this directory and 
-its subdirectories (which you may create as neeeded).
+# Re-Meme-Ber
 
+##### Demo URL: [Demo](http://67.205.175.78)
 
-Project URL: http://67.205.175.78
+**Re-Meme-Ber** is a website allowing user to create, store memes, as well as communicating with other users via meme.
+
