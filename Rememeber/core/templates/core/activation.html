@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Activation You Rememeber Account</title>
+</head>
+<body>
+<p>Hello, Welcome to Rememeber!</p>
+<p>Please click following link to activate you account</p>
+<a href="{{ host}}{% url 'activate' user_id %}">Activate</a>
+<p>{{ host }}{% url 'activate' user_id %}</p>
+</body>
+</html>

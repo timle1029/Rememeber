@@ -1,0 +1,27 @@
+.form-sign {
+    max-width: 450px;
+    padding: 25px;
+    margin: 0 auto;
+    /*border-style: solid;*/
+    /*border-radius: 5px;*/
+    /*border-width: 1px;*/
+}
+
+.form-sign-heading {
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.row-buffer {
+    margin-top: 10px;
+}
+.text-color {
+    /*color: antiquewhite;*/
+}
+body {
+    background: url("../images/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

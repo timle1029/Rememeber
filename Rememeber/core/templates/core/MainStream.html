@@ -1,0 +1,189 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#  <title>Re-Meme-ber</title>#}
+{#  {% load staticfiles %}#}
+{#  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">#}
+  {#  <link rel="stylesheet" type="text/css" href="node_modules/materialize-css/dist/css/materialize.min.css">#}
+{#  <link type="text/css" rel="stylesheet" href="{% static 'core/css/materialize.min.css' %}">#}
+{#  <!-- Compiled and minified CSS -->#}
+{#  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">-->#}
+{#  <link type="text/css" rel="stylesheet" href="{% static 'core/css/stream.css' %}">#}
+{##}
+{#</head>#}
+{#<body>#}
+{#<div class="navbar-fixed">#}
+{#  <nav class="light-blue lighten-3">#}
+{#    <div class="container">#}
+{#      <div class="nav-wrapper">#}
+{#        <a href="{% url 'home' %}" class="brand-logo">Re-Meme-ber</a>#}
+{#      </div>#}
+{#      <ul class="right hide-on-med-and-down">#}
+{#        <li><a href="#" class="dropdown-button2"#}
+{#                data-activates="dropdown2" id="notification">Notification</a></li>#}
+{#        <li><a href="#" class="dropdown-button1"#}
+{#               data-activates="dropdown1">{{ user.first_name }} {{ user.last_name }}</a>#}
+{#        </li>#}
+{#      </ul>#}
+{#    </div>#}
+{#    <ul id='dropdown1' class='dropdown-content'>#}
+{#      <li><a href="{% url 'profile' user.id %}">Profile</a></li>#}
+{#      <li class="divider"></li>#}
+{#      <li><a href="{% url 'setting' %}">Setting</a></li>#}
+{#      <li class="divider"></li>#}
+{#      <li><a href="{% url 'log_out' %}">Log out</a></li>#}
+{#    </ul>#}
+{#    <ul id='dropdown2' class='dropdown-content'>#}
+{#    </ul>#}
+{#  </nav>#}
+{#</div>#}
+
+{% extends 'core/base.html' %}
+{% block title %}
+  Re-Meme-ber
+{% endblock %}
+{% block content %}
+<a class="btn-floating btn-large waves-effect waves-light red button-collapse filter" data-activates="slide-out">
+  <i class="material-icons">search</i>
+</a>
+<div class="fixed-action-btn new">
+  <a class="btn-floating btn-large red" href="{% url 'new_meme' %}"><i class="material-icons">add</i></a>
+</div>
+<ul id="slide-out" class="side-nav">
+  <li>
+    <div class="userView">
+      <div class="background">
+        <img class="background" src="{% url 'profile_background' %}">
+      </div>
+      <a href="{% url 'profile' user_id %}"><img class="circle" src="{% url 'get_photo' user_id %}"></a>
+      <a href="{% url 'profile' user_id %}"><span
+          class="white-text name">{{ user.first_name }} {{ user.last_name }}</span></a>
+      <a href="#"><span class="white-text email">{{ user.email }}</span></a>
+    </div>
+  </li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li class="search">
+    <form action="{% url 'search'  %}" method="get">
+      <div class="search-warpper">
+        <input id="search" placeholder="Type to search" name="query" required>
+      </div>
+      <button type="submit" class="btn-flat"><i class="material-icons right">search</i>Find out you favorite</button>
+    </form>
+  </li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li>
+    <form>
+      <ul class="collapsible card" data-collapsible="expendable">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">whatshot</i>Time</div>
+          <div class="collapsible-body">
+            <p>
+              <a href="{% url 'sort' 'recent' %}">Most Recent</a>
+            </p>
+            <p>
+              <a href="{% url 'sort' 'oldest' %}">Oldest</a>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">favorite</i>Popularity</div>
+          <div class="collapsible-body">
+            <p>
+              <a href="{% url 'sort' 'best' %}">People Like Most</a>
+            </p>
+            <p>
+              <a href="{% url 'sort' 'worst' %}">Most of us don't like</a>
+            </p>
+            <p>
+              <a href="{% url 'sort' 'best_in_one_day' %}">Hottest in last 24hrs</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </form>
+  </li>
+</ul>
+<div class="container">
+  <div class="grid row">
+    {% if meme_list %}
+      {% for meme in meme_list %}
+        <div class="col m4 grid-item">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img id="this-meme-image" class="activator" src="{% url 'show_meme_photo' meme.id %}">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">{{ meme.title }}
+                 <i class="material-icons right">more_vert</i></span>
+              <!--<p><a href="#">This is a link</a></p>-->
+              <p class="">From <a
+                  href="{% url 'profile' meme.owner.id %}">{{ meme.owner.first_name }} {{ meme.owner.last_name }}</a>
+              </p>
+              <p class="favorite"><i class="material-icons">favorite</i>
+                <span id="popularity-{{ meme.id }}">
+                {% if meme.popularity_score %}
+                  {{ meme.popularity_score }}
+                {% endif %}
+                  </span>
+              </p>
+              <span class="chip meme-tag">
+                {{ meme.tags }}
+                </span>
+            </div>
+            <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Action
+            <i class="material-icons right">close</i>
+          </span>
+              <div class="col s12 m6">
+                <div class="card-panel center grey lighten-5">
+                  <a class="action-button" href="{% url 'edit_meme' meme.background.id %}">
+                    <p class="action"><i class="material-icons">mode_edit</i></p>
+                    <p class="action">Edit</p>
+                  </a>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="card-panel center grey lighten-5">
+                  <a class="action-button like-button" href="#" id="{{ meme.id }}">
+                    <p class="action"><i class="material-icons">favorite</i></p>
+                    <p class="action">Like</p>
+                  </a>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="card-panel center grey lighten-5">
+                  <a class="action-button" href="#" id="share_action_button">
+                    <p class="action"><i class="material-icons">share</i></p>
+                    <p class="action">Share</p>
+                  </a>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="card-panel center grey lighten-5">
+                  <a class="action-button" href="{% url 'meme_war' meme.id %}">
+                    <p class="action"><i class="material-icons">face</i></p>
+                    <p class="action">Join!</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+{#<script src="{% static 'core/js/jquery.min.js' %}"></script>#}
+{#<script src="{% static 'core/js/materialize.min.js' %}"></script>#}
+{#<script src="{% static 'core/js/masonry.pkgd.min.js' %}"></script>#}
+{#<!-- Compiled and minified JavaScript -->#}
+{#<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>-->#}
+{#<script src="{% static 'core/js/stream.js' %}" type="text/javascript"></script>#}
+{#</body>#}
+{#</html>#}

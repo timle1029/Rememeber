@@ -1,0 +1,133 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#  {% load staticfiles %}#}
+{#  <title>Re-Meme-ber</title>#}
+{#  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">#}
+{#  <!-- Compiled and minified CSS -->#}
+{#  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">-->#}
+{#  <link rel="stylesheet" type="text/css" href="node_modules/materialize-css/dist/css/materialize.min.css">#}
+{#  <link type="text/css" rel="stylesheet" href="css/stream.css">#}
+{#  <link type="text/css" rel="stylesheet" href="css/memewar.css">#}
+{#  <link type="text/css" rel="stylesheet" href="{% static 'core/css/materialize.min.css' %}">#}
+{#  <link type="text/css" rel="stylesheet" href="{% static 'core/css/sign.css' %}">#}
+{#  <link type="text/css" rel="stylesheet" href="{% static 'core/css/memewar.css' %}">#}
+{##}
+{#</head>#}
+{#<body>#}
+{#<div class="navbar-fixed">#}
+{#  <nav class="light-blue lighten-3">#}
+{#    <div class="container">#}
+{#      <div class="nav-wrapper">#}
+{#        <a href="{% url 'home' %}" class="brand-logo">Re-Meme-ber</a>#}
+{#      </div>#}
+{#      <ul class="right hide-on-med-and-down">#}
+{#        <li><a href="#" class="dropdown-button2"#}
+{#                data-activates="dropdown2" id="notification">Notification</a></li>#}
+{#        <li><a href="#" class="dropdown-button1"#}
+{#               data-activates="dropdown1">{{ user.first_name }} {{ user.last_name }}</a>#}
+{#        </li>#}
+{#      </ul>#}
+{#    </div>#}
+{#    <ul id='dropdown1' class='dropdown-content'>#}
+{#      <li><a href="{% url 'profile' user.id %}">Profile</a></li>#}
+{#      <li class="divider"></li>#}
+{#      <li><a href="{% url 'setting' %}">Setting</a></li>#}
+{#      <li class="divider"></li>#}
+{#      <li><a href="{% url 'log_out' %}">Log out</a></li>#}
+{#    </ul>#}
+{#    <ul id='dropdown2' class='dropdown-content'>#}
+{#    </ul>#}
+{#  </nav>#}
+{#</div>#}
+
+
+{% extends 'core/base.html' %}
+{% block title %}
+  Meme War!
+{% endblock %}
+{% block css %}
+  {% load staticfiles %}
+  <link type="text/css" rel="stylesheet" href="{% static 'core/css/sign.css' %}">
+  <link type="text/css" rel="stylesheet" href="{% static 'core/css/memewar.css' %}">
+{% endblock %}
+{% block content %}
+
+  <div class="fixed-action-btn new">
+    <a class="btn-floating btn-large red" href="{% url 'new_meme' %}"><i class="material-icons">add</i></a>
+  </div>
+  <div class="container">
+    <div id="dashboard">
+      <h2 class="center">New Meme View</h2>
+      <div class="row">
+        <div class="col m8 offset-m2">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              {#            <img class="activator" src="images/office.jpg">#}
+              <img src="{% url 'show_meme_photo' meme_id %}" class="activator">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">{{ meme_title }}<i
+                  class="material-icons right">more_vert</i></span>
+              <!--<p><a href="#">This is a link</a></p>-->
+              <p class="">From <a href="#">{{ curr_user_full_name }}</a></p>
+              <p class="favorite"><i class="material-icons">favorite</i></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Action<i class="material-icons right">close</i></span>
+              <div class="col s12 m6">
+                <div class="card-panel center grey lighten-5">
+                  <a class="action-button" href="{% url 'edit_meme' meme.background.id %}">
+                    <p class="action"><i class="material-icons">mode_edit</i></p>
+                    <p class="action">Edit</p>
+                  </a>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="card-panel center grey lighten-5">
+                  <a class="action-button like-button" href="#" id="{{ meme.id }}">
+                    <p class="action"><i class="material-icons">favorite</i></p>
+                    <p class="action">Like</p>
+                  </a>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="card-panel center grey lighten-5">
+                  <a class="action-button" href="#" id="share_action_button">
+                    <p class="action"><i class="material-icons">share</i></p>
+                    <p class="action">Share</p>
+                  </a>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <div class="card-panel center grey lighten-5">
+                  <a class="action-button" href="{% url 'meme_war' meme.id %}">
+                    <p class="action"><i class="material-icons">face</i></p>
+                    <p class="action">Join!</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center join-meme-war">
+        <a class="waves-effect waves-light btn" href="{% url 'home' %}">Home</a>
+      </div>
+    </div>
+    {#  <div class="center join-meme-war">#}
+    {#    <button class="btn waves-effect" type="submit">Join!</button>#}
+    {#  </div>#}
+  </div>
+{% endblock %}
+{#<script src="{% static 'core/js/jquery.min.js' %}"></script>#}
+{#<script src="{% static 'core/js/materialize.min.js' %}"></script>#}
+{#<script src="{% static 'core/js/stream.js' %}"></script>#}
+{#<script src="node_modules/jquery/dist/jquery.min.js"></script>#}
+{#<script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>#}
+{#<!-- Compiled and minified JavaScript -->#}
+{#<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>-->#}
+{#<script src="js/stream.js" type="text/javascript"></script>#}
+{#</body>#}
+{#</html>#}

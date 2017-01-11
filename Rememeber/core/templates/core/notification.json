@@ -1,0 +1,10 @@
+[
+  {% for notification in notification_list %}
+    {
+      "sender": "{{ notification.sender.first_name }} {{notification.sender.last_name }}",
+      "meme_war": "{{ notification.meme_war.thread_meme.title }}",
+      "message_id": "{{ notification.id }}"
+    }
+  {% if not forloop.last %},{% endif %}
+  {% endfor %}
+]

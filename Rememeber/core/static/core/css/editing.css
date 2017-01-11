@@ -1,0 +1,69 @@
+.meme-background {
+    display: inline;
+    margin: 2%;
+    max-height: 500px;
+    max-width: 500px;
+}
+.meme-image-div {
+    max-width: 55%;
+    overflow: hidden;
+}
+.card.horizontal .card-image {
+    max-width: 55%;
+}
+.template-library {
+    margin: 10px;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+}
+.template-image {
+    max-width: 100%;
+    overflow: hidden;
+}
+.select-template {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.added-text {
+    /*margin-top: 1%;*/
+}
+
+.image-background-div {
+    margin: 0 auto;
+}
+
+#blah {
+    max-width: 70%;
+}
+
+.top-caption {
+    position: absolute;
+    color: white;
+    left: 50%;
+    top: 5%;
+}
+.inside-top-caption {
+    position: relative;
+    font-family: Impact;
+    font-size: 3em;
+    left: -50%;
+}
+.bottom-caption {
+    position: absolute;
+    color: white;
+    left: 50%;
+    bottom: 5%;
+}
+.inside-bottom-caption {
+    position: relative;
+    font-family: Impact;
+    font-size: 3em;
+    left: -50%;
+}
+.preview {
+    position: relative;
+}
+.brand-logo {
+    font-family: satisfy, cursive;
+}

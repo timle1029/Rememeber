@@ -1,0 +1,6 @@
+[
+  {
+    "meme_id": "{{ meme_id }}",
+    "popularity": "{{ count }}"
+  }
+]

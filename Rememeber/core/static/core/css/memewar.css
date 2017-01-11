@@ -1,0 +1,27 @@
+.brand-logo {
+    font-family: satisfy, cursive;
+}
+.card.horizontal .card-image {
+    max-width: 70%;
+}
+
+.join-meme-war {
+    margin-bottom: 5%;
+}
+
+.meme-action {
+    display: inline;
+    width: 48%;
+    height: 48%;
+    position: relative;
+}
+.grid-item {
+    width: 33.33333%;
+}
+.favorite {
+    display: table-cell;
+    margin-top: 1%;
+}
+.meme-tag {
+    display: table-cell;
+}

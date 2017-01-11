@@ -1,0 +1,4 @@
+Hello welcome to Rememeber!
+
+Please click following link to activate you account:
+{% url 'activate' user_id %}

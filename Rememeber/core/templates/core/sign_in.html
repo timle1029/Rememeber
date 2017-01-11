@@ -1,0 +1,59 @@
+<!--Reference:-->
+<!--http://glyphicons.com/examples-of-use/ Note: I find glyphicons example in this page-->
+<!--http://v4-alpha.getbootstrap.com/components/input-group/ Note: I use the example to add glyphicons in input field-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  {% load staticfiles %}
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+  <!--<link type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">-->
+  <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {#  <link type="text/css" href="node_modules/materialize-css/dist/css/materialize.min.css" rel="stylesheet">#}
+  {#  <link type="text/css" href="css/sign.css" rel="stylesheet">#}
+  <link type="text/css" rel="stylesheet" href="{% static 'core/css/materialize.min.css' %}">
+  <link type="text/css" rel="stylesheet" href="{% static 'core/css/sign.css' %}">
+  <title>Sign in to Rememeber</title>
+</head>
+<body>
+<div class="container row-buffer">
+  <div class="row">
+    <h3 class="center-align">Log in</h3>
+    <form class="col s12" action="{% url 'sign_in' %}" method="post">
+      <div class="row">
+        <div class="input-field col s6 offset-l3">
+          <input type="text" class="validate" placeholder="Username" required name="username">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 offset-l3">
+          <input name="password" type="password" class="validate" placeholder="Password" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 offset-l3">
+          <button class="btn waves-effect waves-light red lighten-2" type="reset" name="action">Reset
+          </button>
+          <button class="btn waves-effect waves-light right" type="submit" name="action">Log in
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+      {% csrf_token %}
+    </form>
+    <div class="input-field col s6 offset-l3">
+      <a href="{% url 'sign_up' %}">Don't have an account? Sign up now!</a>
+    </div>
+    <div class="input-field col s6 offset-l3">
+      <a href="{% url 'password_reset' %}">Forget my password?</a>
+    </div>
+  </div>
+</div> <!-- /container -->
+{#<script src="node_modules/jquery/dist/jquery.min.js"></script>#}
+{#<script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>#}
+<script src="{% static 'core/js/jquery.min.js' %}"></script>
+<script src="{% static 'core/js/materialize.min.js' %}"></script>
+</body>
+</html>

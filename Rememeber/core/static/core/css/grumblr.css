@@ -1,0 +1,109 @@
+.grumblr-brand {
+    font-family: satisfy, cursive;
+}
+
+.dashboard {
+    border: 1px solid #b9def0;
+    border-radius: 6px;
+    float: left;
+    padding-bottom: 10px;
+}
+
+.main-content {
+    padding-top: 56px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.profile-image {
+    height: 72px;
+    width: 72px;
+    border: 2px solid whitesmoke;
+    border-radius: 6px;
+}
+
+#main-profile-image {
+    height: 144px;
+    width: 144px;
+}
+
+.profile-upper-part {
+    padding-top: 60px;
+}
+
+#custom-search-input {
+    padding-top: 30px;
+    /*background-color: #fff;*/
+}
+#tag-cloud {
+    padding-top: 30px;
+}
+.tag-cloud-btn {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 10px;
+    margin-top: 10px;
+}
+.grumblr-context {
+    border: 1px solid #b9def0;
+    border-radius: 6px;
+    margin-left: 15px;
+    margin-right:15px;
+}
+.new-grumblr {
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.new-grumblr-button {
+    margin-left: 6px;
+    margin-outside: 12px;
+}
+.posted-grumblr {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.text-context {
+    padding-left: 80px;
+    font-family: Helvetica;
+    font-size: 25px;
+}
+.function-btn {
+    padding-left: 80px;
+}
+.btn-outline {
+    background-color: transparent;
+    transition: all 0.5s;
+}
+.btn-outline.btn-primary {
+    color: #428bca;
+}
+.btn-outline.btn-success {
+    color: #5cb85c;
+}
+.btn-outline.btn-info {
+    color: #5bc0de;
+}
+.btn-outline.btn-danger {
+    color: #d9534f;
+}
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-danger.btn-outline:hover,
+.btn-info.btn-outline:hover {
+    color: #fff;
+}
+.user-name {
+    padding-left: 10px;
+    font-size: 14px;
+    color: #9d9d9d;
+}
+.post-time {
+    font-size: 14px;
+    color: #9d9d9d;
+}
+body {
+    background-color: whitesmoke;
+}
