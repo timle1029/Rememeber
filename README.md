@@ -5,3 +5,10 @@
 **Re-Meme-Ber** is a website allowing user to create, store memes, as well as communicating with other users via meme.
 
 If you sign up yet can't get confirmation email, please check you spam filter. (Gmail seems to tag it as a spam email)
+
+if you can't get confirmation email anyway. Please use credentials below. 
+
+
+```
+Username: test_account
+Password: 12345678
